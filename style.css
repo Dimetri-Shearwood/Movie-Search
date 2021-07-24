@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+  }
+
+.navbar {
+    /* border: 1px solid black; */
+    padding: 25px;
+    background-color: #f7f8f9;
+}
+
+.searchfield {
+    float: right;
+    padding: 0 0 30 0px;
+}
+
+.input {
+    padding: 6px 100px 6px 6px;
+    margin-right: 30px;
+}
+
+
+
