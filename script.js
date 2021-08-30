@@ -1,21 +1,27 @@
-let createdDiv = document.createElement("div");
-let movieContainer = document.querySelector("container");
-let currentPicture = document.querySelector("current");
-let createdImg = document.createElement("img");
+let selectElements = (selector) => document.querySelectorAll(selector)
+let selectAnElement = (selector) => document.querySelector(selector)
+let createAnElement = (elementType) => document.createElement(elementType)
+let appendAChild = (theParent, theChild) => theParent.appendChild(theChild)
 
 
-movieContainer.appendChild(createdDiv);
-currentPicture.appendChild(createdImg);
+let createdDiv = createAnElement("div");
+let createdImg = createAnElement("img");
+let movieContainer = selectAnElement(".container");
+let currentPicture = selectAnElement(".current");
 
-const url = "www.fetchcalldemo.com";
+// movieContainer.appendChild(createdDiv);
+// currentPicture.appendChild(createdImg);
+appendAChild(movieContainer, createdDiv);
+appendAChild(currentPicture, createdImg);
 
-//Can async functions be arrow functions?
-async fetch = () => {
-  let response = await fetch(url);
-  let data = await response.text();
+const URL = "www.fetchcalldemo.com";
+
+let getData = async (url) => {
+  let response = await getData(url);
+  let data = await response.json();
   console.log(data);
 }
-
+getData(URL);
 
 
 let allShows = {
