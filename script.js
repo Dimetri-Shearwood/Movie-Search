@@ -1,7 +1,22 @@
 let createdDiv = document.createElement("div");
 let movieContainer = document.querySelector("container");
+let currentPicture = document.querySelector("current");
+let createdImg = document.createElement("img");
+
 
 movieContainer.appendChild(createdDiv);
+currentPicture.appendChild(createdImg);
+
+const url = "www.fetchcalldemo.com";
+
+//Can async functions be arrow functions?
+async fetch = () => {
+  let response = await fetch(url);
+  let data = await response.text();
+  console.log(data);
+}
+
+
 
 let allShows = {
   Title: "Guardians of the Galaxy Vol. 2",
@@ -44,3 +59,9 @@ let allShows = {
   Website: "N/A",
   Response: "True",
 };
+
+//Create a function to display picture. Then 
+displayCurrentPic = () => {
+  allShows.Poster
+}
+
