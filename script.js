@@ -18,9 +18,8 @@ appendAChild(movieContainer, createdDiv);
 appendAChild(recentContainer, createdDiv);
 appendAChild(currentPicture, createdImg);
 appendAChild(currentPicture, createdImg);
-appendAChild(recent1, createdImg);
-appendAChild(recent2, createdImg);
-appendAChild(recent3, createdImg);
+
+
 
 
 const URL = "www.fetchcalldemo.com"; //omdb api
@@ -81,47 +80,65 @@ let allShows = {
 // I have to fill the image src attribute with allShows.Poster
 //?? Figure out how to add a src with a DOM ??
 // I dont know what to do next
-currentFullDisplay = () => {
-  displayCurrentPic = () => {
-    console.log(allShows.Poster);
-    createdImg.src = allShows.Poster;
-    // allShows.Poster.classList.add("currentPicture")
-  };
-  displayCurrentPic();
 
-  displayCurrentTitle = (title) => {
-    console.log(allShows.Title);
-    let heading = document.createElement("h1");
-    heading.innerHTML = allShows.Title;
-    appendAChild(currentPicture, heading);
-  };
-  displayCurrentTitle();
+displayCurrentFilm = (title, description, releaseDate, rating ) => {
+  let heading = document.createElement("h1");
+  let plot = document.createElement("p");
+  let ratings = document.createElement("h5");
+  let released = document.createElement("time");
 
-  displayCurrentPlot = (description) => {
-    console.log(allShows.Plot);
-    let plot = document.createElement("p");
-    plot.innerHTML = allShows.Plot;
-    appendAChild(currentPicture, plot);
-  };
-  displayCurrentPlot();
+  createdImg.src = allShows.Poster;
+  heading.innerHTML = allShows.Title;
+  plot.innerHTML = allShows.Plot;
+  released.innerHTML = `Release Date: ${allShows.Released}`;
+  ratings.innerHTML = `Rating: ${allShows.Ratings[1]}`;
+  
+  appendAChild(currentPicture, heading);
+  appendAChild(currentPicture, plot);
+  appendAChild(currentPicture, released);
+  appendAChild(currentPicture, ratings);
+}
 
-  displayCurrentRelease = (releaseDate) => {
-    console.log(allShows.Released);
-    let released = document.createElement("time");
-    released.innerHTML = `Release Date: ${allShows.Released}`;
-    appendAChild(currentPicture, released);
-  };
-  displayCurrentRelease();
-
-  displayCurrentRating = (rating) => {
-    console.log(allShows.Ratings);
-    let ratings = document.createElement("h5");
-    ratings.innerHTML = `Rating: ${allShows.Ratings[1]}`;
-    appendAChild(currentPicture, ratings);
-  };
-  displayCurrentRating();
+displayCurrentPic = () => {
+  console.log(allShows.Poster);
+  createdImg.src = allShows.Poster;
+  // allShows.Poster.classList.add("currentPicture")
 };
-currentFullDisplay();
+displayCurrentTitle = (title) => {
+  console.log(allShows.Title);
+  let heading = document.createElement("h1");
+  heading.innerHTML = allShows.Title;
+  appendAChild(currentPicture, heading);
+};
+displayCurrentPlot = (description) => {
+  console.log(allShows.Plot);
+  let plot = document.createElement("p");
+  plot.innerHTML = allShows.Plot;
+  appendAChild(currentPicture, plot);
+};
+
+
+displayCurrentRelease = (releaseDate) => {
+  console.log(allShows.Released);
+  let released = document.createElement("time");
+  released.innerHTML = `Release Date: ${allShows.Released}`;
+  appendAChild(currentPicture, released);
+};
+
+
+displayCurrentRating = (rating) => {
+  console.log(allShows.Ratings);
+  let ratings = document.createElement("h5");
+  ratings.innerHTML = `Rating: ${allShows.Ratings[1]}`;
+  appendAChild(currentPicture, ratings);
+};
+
+  displayCurrentPic();
+  displayCurrentTitle();
+  displayCurrentPlot();
+  displayCurrentRelease();
+  displayCurrentRating();
+
 
 allRecentDisplays = () => {
 //I am trying to pass all of the information from current picture to the first pic1 last 3 searched
@@ -131,12 +148,28 @@ allRecentDisplays = () => {
   //Figure out how to send the same info to pic1 class
   displayLastPic1 = () => {
     console.log(allShows.Poster);
-    
-    createdImg.src = allShows.Poster;
+    appendAChild(recent1, createdImg);
+    recent1.src = allShows.Poster;
     
     // allShows.Poster.classList.add("currentPicture")
   };
-  displayLastPic1();
+   displayLastPic1();
+  displayLastPic2 = () => {
+    console.log(allShows.Poster);
+    appendAChild(recent2, createdImg);
+    recent2.src = allShows.Poster;
+    
+    // allShows.Poster.classList.add("currentPicture")
+  };
+  displayLastPic2();
+  displayLastPic3 = () => {
+    console.log(allShows.Poster);
+    appendAChild(recent3, createdImg);
+    recent3.src = allShows.Poster;
+    
+    // allShows.Poster.classList.add("currentPicture")
+   };
+  displayLastPic3();
 
 }
 allRecentDisplays();
