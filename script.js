@@ -13,13 +13,10 @@ let recent2 = selectAnElement(".pic2")
 let recent3 = selectAnElement(".pic3")
 
 
-// movieContainer.appendChild(createdDiv);
-// currentPicture.appendChild(createdImg);
 appendAChild(movieContainer, createdDiv);
 appendAChild(recentContainer, createdDiv);
 appendAChild(currentPicture, createdImg);
 appendAChild(currentPicture, createdImg);
-
 
 
 
@@ -31,19 +28,23 @@ let handleSubmit = (e) => {
 
 
   // What to do next:
-  // 1. Clean up your unneeded code
-  // 2. Update the api call to also accept the film type selection
+  // 1. Clean up your unneeded code - DONE
+  // 2. Update the api call to also accept the film type selection - DONE
   // 3. Update your DOM logic so that it clears out the old data from the Current Search Box
   // 4. Stretch Goal: Try and redesign so that you are able to keep track of the previously searched film
   // ie: We still need to render the three previously searched films
   // Hint: One approach might be to store all api data in a separate array and then render each item/index in the array
 
-  console.log(e.target.children[0].value)
-  console.log(e.target.children[1].value)
+  // console.log(e.target.children[0].value)
+  // console.log(e.target.children[1].value)
 
-  let userProvidedFilmTitle = e.target.children[0].value
+  let filmTitle = e.target.children[0].value
+  let userProvidedFilmType = e.target.children[1].value
+  let userProvidedFilmTitle = filmTitle.split(' ').join('+');
 
-  const URL = `http://www.omdbapi.com/?t=${userProvidedFilmTitle}&apikey=aed557e4`;
+  
+
+  const URL = `http://www.omdbapi.com/?t=${userProvidedFilmTitle}&type=${userProvidedFilmType}&apikey=aed557e4`;
 
   console.log(URL)
   getData(URL);
@@ -64,6 +65,7 @@ let filmData = [
 ]
 
 let getData = async (url) => {
+  
   let response = await fetch(url);
   let data = await response.json();
 
@@ -81,7 +83,7 @@ displayCurrentFilm = (apiData) => {
   heading.innerHTML = apiData.Title;
   plot.innerHTML = apiData.Plot;
   released.innerHTML = `Release Date: ${apiData.Released}`;
-  ratings.innerHTML = `Rating: ${apiData.Ratings[0].Value}`;
+  // ratings.innerHTML = `Rating: ${apiData.Ratings[0].Value}`;
 
 
   appendAChild(currentPicture, heading);
